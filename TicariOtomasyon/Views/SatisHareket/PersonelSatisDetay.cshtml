@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewBag.Title = "PersonelSatisDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using TicariOtomasyon.Models.Siniflar
+@model List<SatisHareket>
+
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="index.html">@ViewBag.personelAd</a></li>
+    <li class="breadcrumb-item active">Personel Satış Listesi</li>
+
+</ol>
+
+
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Tarih</th>
+            <th>Urun</th>
+
+
+            <th>Adet</th>
+            <th>Fiyat</th>
+
+            <th>Toplam Tutar</th>
+            <th>Cari</th>
+            
+
+
+           
+            <th>Satış Kalem</th>
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.SatisId</td>
+                <td>@x.Tarih</td>
+                <td>@x.Urun.UrunAd</td>
+                <td>@x.Adet</td>
+                <td>@x.Fiyat</td>
+                <td>@x.ToplamTutar</td>
+                
+
+
+
+
+           
+                <td><a class="btn btn-success" href="/SatisHareket/SatisDetayPdf/@x.SatisId">Satis Detay</a></td>
+                <td><a class="btn btn-success" href="/SatisHareket/SatisKalemDetay/@x.SatisId">Satış Kalem Detay</a></td>
+
+            </tr>
+
+
+        }
+
+
+    </tbody>
+
+
+</table>
+
+
+

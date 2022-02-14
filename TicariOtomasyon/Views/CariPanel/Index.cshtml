@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
+}
+@model TicariOtomasyon.Models.Siniflar.Cari
+
+<h2>Mvc Ticari Otomasyon Cari Bilgi Paneli</h2>
+
+
+@using (Html.BeginForm("Index2", "CariPanel"))
+{
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <label>
+                    Mail Adresiniz: @HttpContext.Current.User.Identity.Name
+                </label>
+            </td>
+        </tr>
+        <tr><td>@Html.TextBoxFor(x => x.CariAd, new { @class = "form-control" })</td></tr>
+        <tr><td>@Html.TextBoxFor(x => x.CariSoyad, new { @class = "form-control" })</td></tr>
+        <tr><td>@Html.TextBoxFor(x => x.CariSehir, new { @class = "form-control" })</td></tr>
+        <tr><td>@Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })</td></tr>
+
+
+
+
+
+    </table>
+    <button class="btn btn-success block">Güncelle</button>
+
+
+}
+
+
+
+
+
+
+
+
+
+

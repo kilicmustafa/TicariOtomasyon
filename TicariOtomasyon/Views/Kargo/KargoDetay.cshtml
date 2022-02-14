@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "KargoDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using TicariOtomasyon.Models.Siniflar
+@model List<KargoTakip>
+
+
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="index.html">@ViewBag.TakipKodu</a></li>
+    <li class="breadcrumb-item active">Kargo Detay</li>
+
+</ol>
+
+
+<a href="/Kargo/KargoEkle" style="margin-bottom:10px;" class="btn btn-primary btn-block">Yeni Ekle</a>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Takip Kodu</th>
+            <th>Açıklama</th>
+            
+            <th>Tarih</th>
+
+
+
+          
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.KargoTakipId </td>
+                <td>@x.TakipKodu </td>
+                <td>@x.Aciklama </td>
+                <td>@x.TarihZaman</td>
+       
+
+
+            </tr>
+
+
+        }
+
+
+    </tbody>
+
+
+</table>
+
+
+

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Index7";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index7</h2>
+
+<div style="height:1000px; width:1000px;">
+
+    @{ 
+        
+
+
+
+        var grafik = new Chart(width: 1000, height: 1000);
+        grafik.AddTitle("Urun - Stok Grafiği")
+            .AddLegend(title: "Stok")
+            .AddSeries(
+                name: "Degerler",
+
+                xValue: new [] {"Uçak Maketi" ,"Araba Maketi" ,"MotorBisiklet Maketi"},
+                yValues: new [] {40, 60, 95}
+
+            ).Write();
+
+    }
+
+
+
+</div>

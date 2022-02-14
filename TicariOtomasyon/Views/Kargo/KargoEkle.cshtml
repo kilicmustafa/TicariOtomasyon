@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "KargoEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+@model TicariOtomasyon.Models.Siniflar.KargoDetay
+
+@using (Html.BeginForm("KargoEkle", "Kargo", FormMethod.Post))
+{
+
+
+<div class="form-group">
+
+    @Html.LabelFor(x => x.TakipKodu)
+    <input type="text" readonly class="form-control" name="TakipKodu" value="@ViewBag.takipKod" />
+
+    @Html.LabelFor(x => x.Aciklama)
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control" })
+
+
+    @Html.LabelFor(x => x.Alici)
+    @Html.TextBoxFor(x => x.Alici, new { @class = "form-control" })
+
+
+    @Html.LabelFor(x => x.Personel)
+    @Html.DropDownListFor(x => x.Personel, (List<SelectListItem>)ViewBag.perList, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.Tarih)
+    <input type="date" name="Tarih" class="form-control" />
+
+
+
+</div>
+
+    <button class="btn btn-info">Ekle</button>
+
+}

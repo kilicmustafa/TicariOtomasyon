@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using TicariOtomasyon.Models.Siniflar
+@model List<SatisHareket>
+
+
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="index.html">Satiş Hareket</a></li>
+    <li class="breadcrumb-item active">Satış Listele</li>
+
+</ol>
+
+<a href="/SatisHareket/SatisEkle" style="margin-bottom:10px;" class="btn btn-primary btn-block">Yeni Ekle</a>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            
+            <th>Id</th>
+            <th>Tarih</th>
+            <th>Urun</th>
+         
+
+            <th>Adet</th>
+            <th>Fiyat</th>
+           
+            <th>Toplam Tutar</th>
+            <th>Cari</th>
+            <th>Personel</th>
+
+            
+            <th>Güncelle</th>
+            <th>Sil</th>
+            <th>Detay</th>
+            <th>Satış Kalem</th>
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.SatisId</td>
+                <td>@x.Tarih</td>
+                <td>@x.Urun.UrunAd</td>
+                <td>@x.Adet</td>
+                <td>@x.Fiyat₺</td>
+                <td>@x.ToplamTutar₺</td>
+                <td>@x.Cari.CariAd @x.Cari.CariSoyad</td>
+                <td>@x.Personel.PersonelAdSoyad</td>
+                
+
+
+
+                <td><a class="btn btn-warning" href="/SatisHareket/SatisGetir/@x.SatisId">Güncelle</a>  </td>
+                <td><a class="btn btn-danger" href="/SatisHareket/SatisSil/@x.SatisId">Sil</a></td>
+                <td><a class="btn btn-info" href="/SatisHareket/SatisDetay/@x.SatisId">Satıs Detay</a></td>
+                <td><a class="btn btn-success" href="/Fatura/FaturaKalemDetay/@x.SatisId">Satış Kalem Detay</a></td>
+
+            </tr>
+
+
+        }
+
+
+    </tbody>
+
+
+</table>
+

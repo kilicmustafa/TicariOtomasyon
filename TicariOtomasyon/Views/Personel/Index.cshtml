@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using TicariOtomasyon.Models.Siniflar
+@model List<Personel>
+
+
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="index.html">Personel</a></li>
+    <li class="breadcrumb-item active">Personel Listele</li>
+
+</ol>
+
+<a href="/Personel/PersonelEkle" style="margin-bottom:10px;" class="btn btn-primary btn-block">Yeni Ekle</a>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Görsel</th>
+            <th>Id</th>
+            <th>Ad Soyad</th>
+
+            <th>Departman</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+            <th>Satış Detay</th>
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+        <tr>
+            <td><img src="@x.PersonelGörsel" style="width: 100px" /></td>
+            <td>@x.PersonelId</td>
+            <td>@x.PersonelAdSoyad</td>
+            <td>@x.departman.DepartmanAd</td>
+            
+
+
+            <td><a class="btn btn-warning" href="/Personel/PersonelGetir/@x.PersonelId">Güncelle</a>  </td>
+            <td><a class="btn btn-danger" href="/Personel/PersonelSil/@x.PersonelId">Sil</a></td>
+            <td><a class="btn btn-success" href="/SatisHareket/PersonelSatisDetay/@x.PersonelId">Satis Detay</a></td>
+
+        </tr>
+
+
+        }
+
+
+    </tbody>
+
+
+</table>
+
+
+

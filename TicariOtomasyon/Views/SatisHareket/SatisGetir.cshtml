@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "SatisGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@model TicariOtomasyon.Models.Siniflar.SatisHareket
+
+@using (Html.BeginForm("SatisGuncelle", "SatisHareket", FormMethod.Post))
+{
+
+
+    <div class="form-group">
+        @Html.HiddenFor(x => x.SatisId)
+        @Html.LabelFor(x => x.Urun.UrunAd)
+        @Html.DropDownListFor(x => x.UrunID, (List<SelectListItem>)ViewBag.urunList, new { @class = "form-control" })
+
+        @Html.LabelFor(x => x.Adet)
+        @Html.TextBoxFor(x => x.Adet, new { @class = "form-control" })
+
+
+        @Html.LabelFor(x => x.Fiyat)
+        @Html.TextBoxFor(x => x.Fiyat, new { @class = "form-control" })
+
+
+        @Html.LabelFor(x => x.ToplamTutar)
+        @Html.TextBoxFor(x => x.ToplamTutar, new { @class = "form-control" })
+
+        @Html.LabelFor(x => x.Cari.CariAd)
+        @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.cariList, new { @class = "form-control" })
+
+
+        @Html.LabelFor(x => x.Personel.PersonelAdSoyad)
+        @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.personelList, new { @class = "form-control" })
+
+
+
+    </div>
+
+    <button class="btn btn-info">Ekle</button>
+
+}
+

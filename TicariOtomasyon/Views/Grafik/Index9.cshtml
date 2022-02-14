@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "Index9";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <title>Result Visualization</title>
+
+    <script src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="~/GChart/jquery.min.js"></script>
+    <script type="text/javascript" src="~/GChart/loader.js"></script>
+
+
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $.ajax({
+
+                type: "POST",
+
+                dataType: "json",
+
+                contentType: "application/json",
+
+                url: '@Url.Action("VirutilazeUrunStok2", "Grafik")',
+
+                success: function (result) {
+
+
+
+                    google.charts.load('current', {
+
+                        'packages': ['corechart']
+
+                    });
+
+                    google.charts.setOnLoadCallback(function () {
+
+                        drawChart(result);
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+
+        function drawChart(result) {
+
+            var data = new google.visualization.DataTable();
+
+            data.addColumn('string', 'Name');
+
+            data.addColumn('number', 'Marks Obtained');
+
+            var dataArray = [];
+
+
+
+            $.each(result, function (i, obj) {
+
+                dataArray.push([obj.UrunAd, obj.Stok]);
+
+            });
+
+            data.addRows(dataArray);
+
+
+
+            var columnChartOptions = {
+
+                title: "Urun- Stok Grafiği",
+
+                width: 1000,
+
+                height: 400,
+
+                bar: { groupWidth: "20%" },
+
+            };
+
+
+
+            var columnChart = new google.visualization.PieChart(document
+
+                .getElementById('columnchart_div'));
+
+
+
+            columnChart.draw(data, columnChartOptions);
+
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+    <div id="columnchart_div"></div>
+
+
+
+</body>
+
+</html>
+
+

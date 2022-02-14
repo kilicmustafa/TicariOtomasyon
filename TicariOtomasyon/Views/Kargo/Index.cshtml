@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+@using TicariOtomasyon.Models.Siniflar
+@model List<KargoDetay>
+
+
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="index.html">Kargo</a></li>
+    <li class="breadcrumb-item active">Kargo Listele</li>
+
+</ol>
+
+
+@using (Html.BeginForm("Index", "Kargo", FormMethod.Get))
+{
+<p>
+    Kargo Takip Numarası: @Html.TextBox("p")
+    <input type="submit" class="btn btn-info" value="Ara" />
+</p>
+}
+<br />
+<a href="/Kargo/KargoEkle" style="margin-bottom:10px;" class="btn btn-primary btn-block">Yeni Ekle</a>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Takip Kodu</th>
+            <th>Açıklama</th>
+            <th>Alıcı</th>
+            <th>Personel</th>
+            <th>Tarih</th>
+
+
+
+            <th>Detay</th>
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.KargoDetayId </td>
+                <td>@x.TakipKodu </td>
+                <td>@x.Aciklama </td>
+                <td>@x.Alici</td>
+                <td>@x.Personel</td>
+                <td>@x.Tarih</td>
+
+
+
+                <td><a class="btn btn-success" href="/Kargo/KargoDetay/@x.TakipKodu">Detay</a></td>
+
+            </tr>
+
+
+        }
+
+
+    </tbody>
+
+
+</table>
+
+
+
+

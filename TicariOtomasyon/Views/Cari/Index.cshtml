@@ -1,0 +1,64 @@
+﻿@using TicariOtomasyon.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model IPagedList<Cari>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="index.html">Cari</a></li>
+    <li class="breadcrumb-item active">Cari Listele</li>s
+
+</ol>
+
+<a href="/Cari/CariEkle" style="margin-bottom:10px;" class="btn btn-primary btn-block">Yeni Ekle</a>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Şehir</th>
+            <th>Mail</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+            <th>Detaylar</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.CariId</td>
+                <td>@x.CariAd</td>
+                <td>@x.CariSoyad</td>
+                <td>@x.CariSehir</td>
+                <td>@x.CariMail</td>
+                <td><a class="btn btn-warning" href="/Cari/CariGetir/@x.CariId">Güncelle</a>  </td>
+                <td><a class="btn btn-danger" href="/Cari/CariSil/@x.CariId">Sil</a></td>
+                <td><a class="btn btn-success" href="/Cari/CariDetay/@x.CariId">Satış Geçmişi(Yapılacak)</a></td>
+
+            </tr>
+
+
+        }
+
+
+    </tbody>
+
+
+</table>
+
+
+@Html.PagedListPager((IPagedList)Model, sayfa=>Url.Action("Index" ,new { sayfa }))
+

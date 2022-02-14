@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "SatisYap";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>SatisYap</h2>
+
+
+@model TicariOtomasyon.Models.Siniflar.SatisHareket
+
+@using (Html.BeginForm("SatisEkle", "SatisHareket", FormMethod.Post))
+{
+
+
+<div class="form-group">
+
+
+    <input readonly name="UrunId" type="text" value="@ViewBag.dgr1" class="form-control" />
+
+    @Html.LabelFor(x => x.Adet)
+    <input type="number" name="Adet" class="form-control" max="@ViewBag.dgr3" min="1" id="Adet" onkeyup="carp();"/>
+
+    @Html.LabelFor(x => x.Fiyat)
+    <input name="Fiyat" type="text" value="@ViewBag.dgr2" class="form-control"  id="Fiyat" onkeyup="carp();"/>
+
+
+    @Html.LabelFor(x => x.ToplamTutar)
+    <input name="ToplamFiyat" type="text" class="form-control" id="ToplamFiyat" />
+
+    @Html.LabelFor(x => x.Cari.CariAd)
+    @Html.DropDownListFor(x => x.CariId, (List<SelectListItem>)ViewBag.CariList, new { @class = "form-control" })
+
+
+    @Html.LabelFor(x => x.Personel.PersonelAdSoyad)
+    @Html.DropDownListFor(x => x.PersonelId, (List<SelectListItem>)ViewBag.personelList, new { @class = "form-control" })
+
+
+
+</div>
+
+    <button class="btn btn-info">Ekle</button>
+
+}
+
+
+<script>
+    function carp() {
+        var adet = document.getElementById("Adet").value;
+        var fiyat = document.getElementById("Fiyat").value;
+        var carpim = ParseInt(adet) * ParseInt(fiyat);
+
+
+        if (!isNaN(carpim)) {
+            document.getElementById("ToplamTutar").value = carpim;
+        }
+      
+
+
+
+    };
+
+
+</script>

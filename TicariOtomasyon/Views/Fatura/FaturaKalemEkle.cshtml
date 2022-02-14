@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "FaturaKalemEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+
+@using TicariOtomasyon.Models.Siniflar
+@model FaturaKalem
+
+
+
+@using (Html.BeginForm("FaturaKalemEkle", "Fatura", FormMethod.Post))
+{
+    <div class="form-group">
+        <br />
+        
+        @Html.HiddenFor(x => x.FaturaId)
+
+        @Html.LabelFor(x => x.Aciklama)
+
+        @Html.TextBoxFor(x => x.Aciklama, new { @class = "form-control" })
+
+        @Html.LabelFor(x => x.Miktar)
+        @Html.TextBoxFor(x => x.Miktar, new { @class = "form-control" })
+
+        @Html.LabelFor(x => x.BirimFiyat)
+        @Html.TextBoxFor(x => x.BirimFiyat, new { @class = "form-control" })
+
+        @Html.LabelFor(x => x.Tutar)
+        @Html.TextBoxFor(x => x.Tutar, new { @class = "form-control" })
+
+
+
+
+    </div>
+
+    <button class="btn btn-info btn-block">Güncelle</button>
+
+}
+

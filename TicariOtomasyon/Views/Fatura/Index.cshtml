@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@model TicariOtomasyon.Models.Siniflar.TabloBirlestirForPopup
+
+
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="index.html">Fatura Hareket</a></li>
+    <li class="breadcrumb-item active">Fatura Listele</li>
+
+</ol>
+
+<a href="/Fatura/FaturaEkle" style="margin-bottom:10px;" class="btn btn-primary btn-block">Yeni Ekle</a>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+
+
+            <th>Seri Sıra No</th>
+
+
+
+            <th>Tarih</th>
+
+
+
+            <th>Teslim Eden</th>
+            <th>Teslim Alan</th>
+
+
+
+
+            <th>Güncelle</th>
+
+            <th>Detay</th>
+
+            <th>Popup Liste</th>
+            <th>Yeni Kalem</th>
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var x in Model.FaturaTable)
+        {
+            <tr>
+
+                <td>@x.FaturaSeriNo @x.FaturaSıraNo</td>
+
+                <td>@x.VergiDairesi</td>
+                <td>@x.Tarih</td>
+                <td>@x.TeslimEden </td>
+                <td>@x.TeslimAlan</td>
+
+
+
+
+
+
+                <td><a class="btn btn-warning" href="/Fatura/FaturaGetir/@x.FaturaId">Güncelle</a>  </td>
+
+                <td><a class="btn btn-info" href="/Fatura/FaturaKalemDetay/@x.FaturaId">Satıs Detay</a></td>
+                <td>
+                    <button data-toggle="modal" data-target="#popup" class="btn btn-danger" type="button" style="background-color:aquamarine">PopUp</button>
+                </td>
+                <td><a class="btn btn-success" href="/Fatura/FaturaKalemDetay/@x.FaturaId">Kalem</a></td>
+
+
+
+
+            </tr>
+
+
+        }
+
+
+    </tbody>
+
+
+</table>
+
+
+<button data-toggle="modal" data-target="#Modal1" class="btn btn-warning" type="button" style="background-color:chocolate; color:antiquewhite">PopUp</button>
+
+
+
+<div class="modal" id="popup">
+
+    <div class="modal-dialog" >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2 class="modal-title">Kalemler</h2>
+            </div>
+
+            <div class="modal-body">
+
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+
+                            <th>Id</th>
+                            <th>Açıklama</th>
+                            <th>Miktar</th>
+                            <th>Birim Fiyat</th>
+
+                            <th>Tutar</th>
+
+
+
+
+
+
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+
+                        @foreach (var x in Model.FaturaKalemTable)
+                        {
+                            <tr>
+                                <td>@x.FaturaKalemId</td>
+                                <td>@x.Aciklama</td>
+                                <td>@x.Miktar</td>
+                                <td>@x.BirimFiyat</td>
+                                <td>@x.Tutar</td>
+
+
+
+
+
+
+
+
+                            </tr>
+
+
+                        }
+
+
+                    </tbody>
+
+
+                </table>
+
+                <button class="btn btn-danger" data-dismiss="modal">Kapat</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "FaturaKalemDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using TicariOtomasyon.Models.Siniflar
+@model List<FaturaKalem>
+
+
+
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a href="index.html">Fatura Kalem Hareket</a></li>
+    <li class="breadcrumb-item active">Fatura Kalem Listele</li>
+
+</ol>
+
+<a href="/Fatura/FaturaKalemEkle/@ViewBag.FaturaId" style="margin-bottom:10px;" class="btn btn-primary btn-block">Yeni Ekle</a>
+
+
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+
+            <th>Id</th>
+            <th>Açıklama</th>
+            <th>Miktar</th>
+            <th>Birim Fiyat</th>
+
+            <th>Tutar</th>
+
+
+
+
+
+
+        </tr>
+    </thead>
+
+
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.FaturaKalemId</td>
+                <td>@x.Aciklama</td>
+                <td>@x.Miktar</td>
+                <td>@x.BirimFiyat</td>
+                <td>@x.Tutar</td>
+                
+
+
+
+
+
+
+   
+            </tr>
+
+
+        }
+
+
+    </tbody>
+
+
+</table>
